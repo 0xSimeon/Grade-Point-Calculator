@@ -1,28 +1,70 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <app-grade-point></app-grade-point>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import GradePoint from '@/components/GradePoint.vue';
 export default {
-  name: "App",
+  name: 'App',
+  
   components: {
-    HelloWorld
-  }
+    appGradePoint: GradePoint
+  },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+// Variables
+:root {
+  --color-primary: #fffffe;
+  --color-secondary: #ffd803;
+  --color-tertiary: #bae8e8;
+  --color-tertiary-2: #e3f6f5;
+  --color-heading: #272343;
+  --color-paragraph: #2d334a;
+  --color-blue: #7e7edd;
 }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  // font-size: 56.25%;
+}
+
+body {
+  background: linear-gradient(
+    to right,
+    var(--color-tertiary),
+    var(--color-tertiary-2)
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+  color: var(--color-heading);
+}
+
+p,
+input {
+  color: var(--color-paragraph);
+}
+
+// @media only screen and (min-width: 37.5em) {
+//   html {
+//     font-size: 62.5%;
+//   }
+// }
 </style>

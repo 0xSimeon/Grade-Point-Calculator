@@ -201,7 +201,7 @@ export default {
     }
 
     &-select {
-      padding: .7rem;
+      padding: .65rem;
     }
   }
 

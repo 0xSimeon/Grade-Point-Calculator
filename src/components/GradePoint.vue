@@ -26,37 +26,42 @@
           :key="index"
         >
           <div class="grade__form-group">
-            <label :for="count" class="mr-2 font-bold">Course</label>
+            <label :for="count" class="font-bold">Course</label>
             <input
               type="text"
-              class="textFont py-2 px-4 rounded grade__input mb-3"
+              class="textFont py-2 px-1 sm:px-4 rounded grade__input mb-3"
               v-model="data.course"
             />
           </div>
 
-          <div class="ml-4">
+          <div class="ml-2 sm:ml-4 grade__form-group">
             <label :for="count" class="grade__form-group font-bold"
-              >Grade</label
+              >grade</label
             >
-            <input
+            <select
               type="text"
-              class=" textFont py-2 px-4 rounded grade__input mb-3"
-              v-model="data.grade"
+              class="textFont py-2 px-1 sm:px-4 rounded grade__input mb-3"
+              v-model="data.grade">
+              <option selected>A</option>
+              <option v-for="(grade, index) in grades" :key="index">
+                {{ grade }}
+              </option>
             />
+            </select>
           </div>
-          <div class="ml-4">
+          <div class="ml-2 sm:ml-4 grade__form-group">
             <label :for="count" class="grade__form-group font-bold"
               >Credit</label
             >
             <input
               type="number"
-              class=" textFont py-2 px-4 rounded grade__input mb-3"
+              class=" textFont py-2 px-1 sm:px-4 rounded grade__input mb-3"
               v-model="data.unit"
             />
           </div>
           <span
             @click="removePreviousField(index)"
-            class="remove-field ml-3 text-white cursor-pointer"
+            class="remove-field ml-3 text-white cursor-pointer grade__form-group"
             >X</span
           >
         </div>
@@ -97,8 +102,9 @@ export default {
       newTitle: 'Add a new field',
       numOfCourses: 5,
       totalUnits: '',
+      selected: 'A',
       unit: 0,
-      grade: 3,
+      grades:  ['AB', 'B','BC','C', 'CD', 'D', 'E', 'F' ],
       GPA: 0,
       showGPA: false,
       formData: [{ course: '', grade: '', unit: 0 }]
@@ -185,11 +191,16 @@ export default {
     // width: 43%;
     width: 100%;
     border: 3px solid transparent;
+    background: var(--color-primary);
 
     &:focus {
       border: 3px solid var(--color-blue);
       outline: none;
     }
+  }
+
+  &__form-group {
+    flex: 1 0 25%;
   }
 
   &__gpa {

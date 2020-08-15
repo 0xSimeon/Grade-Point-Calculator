@@ -36,11 +36,11 @@
 
           <div class="ml-2 sm:ml-4 grade__form-group">
             <label :for="count" class="grade__form-group font-bold"
-              >grade</label
+              >Grade</label
             >
             <select
               type="text"
-              class="textFont py-2 px-1 sm:px-4 rounded grade__input mb-3"
+              class="textFont py-2 px-1 sm:px-4 rounded grade__input mb-3 grade__input-select"
               v-model="data.grade">
               <option selected>A</option>
               <option v-for="(grade, index) in grades" :key="index">
@@ -61,7 +61,7 @@
           </div>
           <span
             @click="removePreviousField(index)"
-            class="remove-field ml-3 text-white cursor-pointer grade__form-group"
+            class="remove-field ml-3 text-white cursor-pointer grade__form-group grade__form-group-2"
             >X</span
           >
         </div>
@@ -84,7 +84,8 @@
           </button>
         </app-button>
         <div class="grade__gpa" v-if="showGPA">
-          {{ GPA }}
+          <p class="text-xl sm:text-2xl">Your GPA is: </p>
+          <p>{{ GPA }}</p>
         </div>
       </div>
     </form>
@@ -129,6 +130,7 @@ export default {
     },
     removePreviousField(index) {
       this.formData.splice(index, 1);
+      this.calcul
     },
     calculateGrade() {
       let totalGrades = 0,
@@ -185,7 +187,7 @@ export default {
 .grade {
   width: 100%;
   max-width: 50rem;
-  margin: 0.5rem auto;
+  margin: 4rem auto;
 
   &__input {
     // width: 43%;
@@ -197,10 +199,17 @@ export default {
       border: 3px solid var(--color-blue);
       outline: none;
     }
+
+    &-select {
+      padding: .7rem;
+    }
   }
 
   &__form-group {
     flex: 1 0 25%;
+    &-2 {
+      flex: 1 0 6%;
+    }
   }
 
   &__gpa {
@@ -220,7 +229,7 @@ export default {
 
 @media only screen and (min-width: 37.5em) {
   .grade {
-    margin: 2rem auto;
+    margin: 3rem auto;
   }
 }
 </style>
